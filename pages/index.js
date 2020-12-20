@@ -1,65 +1,46 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import { groupsAPI } from '../api';
+import { MainLayout } from '../layouts';
+import { GoodsList } from '../components';
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+export default function Home({ groups }) {
+	return (
+		<MainLayout
+			title="Интернет магазин"
+			description="Магазин одежды"
+		>
+			<div className="container">
+				<h1>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+				<div className="Groups">
+					{ groups && groups.length &&
+						groups.map(g => (
+							<div className="Group" key={g._id}>
+								<h2>{g.name}</h2>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+								<GoodsList 
+									group={g}
+									items={g.Goods}
+									className="Group__goods"
+								/>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</MainLayout>
+	)
+}
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+export async function getServerSideProps(ctx) {
+	const { data } = await groupsAPI.getAll();
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+	// console.log('data', data.data)
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return {
+		props: {
+			groups: data.data
+		}
+	}
 }

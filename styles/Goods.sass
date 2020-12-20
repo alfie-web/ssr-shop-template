@@ -1,0 +1,100 @@
+
+.Goods
+	position: relative
+	display: flex
+	flex-wrap: wrap
+	margin: 50px -10px 0
+
+.GoodItem
+	$self: &
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	position: relative
+	width: calc(25% - 20px)
+	margin: 0 10px 20px
+	text-align: center
+	overflow: hidden
+	transition: background-color .2s
+
+	&:hover
+		background-color: rgba(183, 188, 207, .1)
+
+		#{$self}__sizes, #{$self}__quantity
+			opacity: 1
+			pointer-events: auto
+
+	
+	&__image-wrap
+		display: flex
+		flex-direction: column
+		justify-content: center
+		flex: 1
+
+	&__image
+		img
+			// position: absolute
+			width: auto
+			height: auto
+			max-height: 410px
+			max-width: 100%
+
+	&__bottom
+		display: flex
+		flex-direction: column
+		align-items: center
+		margin-top: 30px
+		padding-bottom: 30px
+
+	&__title
+		font: 20px/30px $regular
+
+	&__cost
+		font: 24px $extra
+
+	&__addToCart
+		display: block
+		border: none
+		background-color: transparent
+		cursor: pointer
+		outline: none
+		margin-top: 20px
+
+		&:hover
+			svg
+				fill: $red
+		svg
+			fill: $gray
+			transition: fill .2s
+
+	&__sizes, &__quantity
+		opacity: 0
+		pointer-events: none
+		position: absolute
+		top: 30px
+		transition: opacity .2s
+
+	&__sizes
+		display: flex
+		flex-direction: column
+		align-items: center
+		right: 30px
+
+		span
+			margin: 5px 0
+			font: 16px $bold2
+			display: inline-block
+			cursor: pointer
+			color: $black
+			transition: color .2s
+			&:hover, &.active
+				color: $red
+
+			// &.active
+			// 	color: $red
+
+
+	&__quantity
+		left: 20px
+		flex-direction: column
+

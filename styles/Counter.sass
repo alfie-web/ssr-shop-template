@@ -1,0 +1,21 @@
+@import './vars'
+
+.Counter
+	display: flex
+	align-items: center
+
+	button
+		background-color: transparent
+		border: none
+		outline: none
+		font: 18px $bold2
+		cursor: pointer
+		padding: 0 5px
+		color: $gray
+		transition: color .2s
+		&:hover
+			color: $red
+
+	span
+		font: 18px $bold2
+		margin: 10px
