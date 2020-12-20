@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { goodsActions } from '../../store/actions';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/actions';
 import { Sizes, Counter } from '../';
 
 // Так как храню только в localStorage, мне не нужет connect для redux
 const GoodItem = ({ _id, title, cost, images, sizes }) => {
+	const dispatch = useDispatch()
 	// const [size, setSize] = useState(sizes[0] || '');
 	const [state, setState] = useState({
 		size: sizes[0] || '',
@@ -49,14 +51,14 @@ const GoodItem = ({ _id, title, cost, images, sizes }) => {
 				<button 
 					className="GoodItem__addToCart"
 					onClick={() => {
-						console.log('clicked', goodsActions)
-						goodsActions.addGoodToCart({
+						dispatch(cartActions.addGoodToCart({
 							_id,
 							title,
 							cost: +cost,
 							size: state.size,
-							quantity: state.quantity
-						})
+							quantity: state.quantity,
+							image: images && images.length ? images[0] : "/noimage.png"
+						}))
 					}}
 				>
 					<svg width="25" height="28" viewBox="0 0 25 28" xmlns="http://www.w3.org/2000/svg">

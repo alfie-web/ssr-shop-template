@@ -1,0 +1,37 @@
+@import './vars'
+
+.Header
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	background-color: #fff
+	z-index: 100
+	height: 80px
+	border-bottom: 1px solid #f9f9f9
+
+	.container
+		display: flex
+		justify-content: space-between
+		height: 100%
+		align-items: center
+
+	&__cart
+		position: relative
+		cursor: pointer
+
+		&:hover, &.active
+			span
+				color: $red
+			svg
+				fill: $red
+
+		span
+			position: absolute
+			top: -5px
+			left: -10px
+			font: 14px $regular
+			transition: color .2s
+
+		svg
+			transition: fill .2s

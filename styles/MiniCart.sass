@@ -1,0 +1,84 @@
+@import './vars'
+
+.MiniCart
+	position: fixed
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	width: 100vw
+	height: 100vh
+	z-index: 150
+
+	&__container
+		position: relative
+		z-index: 100
+		height: 80vh
+		background-color: #fff
+		// overflow: auto
+		animation: slideInUp .3s ease
+
+		// .container
+		// 	height: 80vh
+
+	&__items
+		position: relative
+		width: 100%
+		height: calc(100% - 72px)
+		overflow: auto
+
+	&__bottom
+		.container
+			padding: 15px 0 25px
+			box-sizing: border-box
+			display: flex
+			justify-content: space-between
+			align-items: flex-end
+
+	&__total
+		span
+			font: 24px $extra
+			color: $red
+			margin-left: 15px
+
+
+	&__item
+		display: flex
+		justify-content: space-between
+		align-items: center
+		width: 97%
+		max-width: 1280px
+		margin: 0 auto
+		padding: 10px 0
+		border-top: 1px solid #f9f9f9
+
+		&:first-child
+			border-top: none
+
+		&-title
+			margin-left: 40px
+
+		&-cost
+			font: 24px $extra
+
+		&-size
+			font: 16px $bold2
+
+		&-left
+			display: flex
+			align-items: center
+			width: 40%
+
+		img
+			width: auto
+			height: auto
+			max-width: 80px
+			max-heigth: 100%
+
+
+@keyframes slideInUp
+	0%
+		opacity: 0
+		transform: translateY(25%)
+	100%
+		opacity: 1
+		transform: translateY(0)

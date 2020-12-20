@@ -1,6 +1,8 @@
 import Head from 'next/head'
 // import NavLink from './NavLink'
 
+import Header from '../components/Header';
+
 export default function MainLayout({ children, title = 'Next app', keywords = '', description = '' }) {
 	return (
 		<>
@@ -17,6 +19,9 @@ export default function MainLayout({ children, title = 'Next app', keywords = ''
 				<NavLink href="/about" activeClassName="Header--active"><a>About</a></NavLink>
 				<NavLink href="/posts" activeClassName="Header--active"><a>Posts</a></NavLink>
 			</nav> */}
+
+			<Header />
+
 			<main>
 				{children}
 			</main>
