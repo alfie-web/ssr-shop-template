@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import Header from '../components/Header';
 
-export default function MainLayout({ children, title = 'Next app', keywords = '', description = '' }) {
+export default function MainLayout({ children, title = 'Next app', keywords = '', description = '', className }) {
 	return (
 		<>
 			<Head>
@@ -22,7 +22,7 @@ export default function MainLayout({ children, title = 'Next app', keywords = ''
 
 			<Header />
 
-			<main>
+			<main className={className}>
 				{children}
 			</main>
 		</>

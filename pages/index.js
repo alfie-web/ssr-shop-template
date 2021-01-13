@@ -11,8 +11,6 @@ export default function Home({ groups }) {
 			description="Магазин одежды"
 		>
 			<div className="container">
-				<h1>Welcome to <a href="https://nextjs.org">Next.js!</a></h1>
-
 				<div className="Groups">
 					{ groups && groups.length &&
 						groups.map(g => (

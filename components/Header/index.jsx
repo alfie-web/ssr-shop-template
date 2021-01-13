@@ -6,9 +6,11 @@ import { cartActions } from '../../store/actions';
 import LocalStorage from '../../helpers/LocalStorage';
 
 import MiniCart from '../MiniCart';
+import MainMenu from './MainMenu';
 
 const Header = () => {
 	const [isCartVisible, setIsCartVisible] = useState(false);
+	const [isMenuVisible, setIsMenuVisible] = useState(false);
 	const { items } = useSelector(state => state.cart);
 	const dispatch = useDispatch();
 
@@ -19,7 +21,7 @@ const Header = () => {
 	}, [items])
 
 	const toggleCartIsVisible = () => {
-		document.body.style.overflow = !isCartVisible ? 'hidden' : 'auto'
+		// document.body.style.overflow = !isCartVisible ? 'hidden' : 'auto'
 		setIsCartVisible(!isCartVisible);
 	}
 
@@ -29,7 +31,14 @@ const Header = () => {
 				<div className="container">
 					<div className="Header__left"></div>
 
-					<div className="Header__center"></div>
+					<div className="Header__center">
+						<div className={classNames('MainMenu__icon', { 'MainMenu__icon--active': isMenuVisible })} onMouseOver={() => setIsMenuVisible(true)}>
+							<svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0 0H26V2H0V0Z" />
+								<path d="M0 14H26V16H0V14Z" />
+							</svg>
+						</div>
+					</div>
 
 					<div className="Header__right">
 						<div 
@@ -50,6 +59,8 @@ const Header = () => {
 					</div>
 				</div>
 			</header>
+
+			{ isMenuVisible && <MainMenu isVisible={isMenuVisible} setIsMenuVisible={setIsMenuVisible} /> }
 
 			{ isCartVisible && <MiniCart items={items} toggleCartIsVisible={toggleCartIsVisible} /> }
 		</>

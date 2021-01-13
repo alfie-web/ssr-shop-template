@@ -1,0 +1,46 @@
+
+.GoodSlider
+	position: relative
+	display: flex
+	justify-content: space-between
+
+	&__previews
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&__preview
+		display: flex
+		margin-bottom: 20px
+		cursor: pointer
+		border: 1px solid transparent
+		box-sizing: border-box
+
+		&--active
+			border: 1px solid $red
+
+		&:last-child
+			margin-bottom: 0
+
+		img
+			width: auto
+			max-height: 120px
+			max-width: 100px
+
+	&__current
+		flex: 1
+		
+		
+		&-img
+			display: flex
+			justify-content: center
+			padding: 0 30px
+			box-sizing: border-box
+
+		img
+			// max-height: 625px
+			// width: auto
+			width: 100%
+			max-width: 440px
+			height: auto
+			// animation: fadeIn 1s

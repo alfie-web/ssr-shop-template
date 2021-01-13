@@ -22,9 +22,12 @@ h1
 h2
 	font: 64px $bold
 
+h3
+	font: 46px $bold
+
 
 main
-	padding: 90px 0
+	padding: 150px 0 90px
 
 .container
 	position: relative
@@ -33,12 +36,23 @@ main
 	margin: 0 auto
 
 .box
+	display: flex
 	width: 100%
 	justify-content: space-between
 	align-items: center
 
 
+@keyframes fadeIn
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+
 @import './Header'
+@import './MainMenu'
 @import './Overlay'
+@import './Button'
 @import './MiniCart'
 @import './Goods'
+@import './GoodSlider'

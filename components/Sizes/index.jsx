@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-const Sizes = ({ className, sizes, initialValue = '', onChange }) => {
+const Sizes = ({ className, sizes, initialValue = '', onChange = () => {} }) => {
 	const [state, setState] = useState(initialValue);
 
 	const handleClick = (val) => {

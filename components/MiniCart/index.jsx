@@ -1,11 +1,10 @@
 import React  from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 
-// import { cartActions } from '../../store/actions';
-// import LocalStorage from '../../helpers/LocalStorage';
 import Overlay from '../Overlay';
+import Item from './Item';
 
 const MiniCart = ({ items, toggleCartIsVisible }) => {
+	console.log('MiniCart renders')
 
 	return (
 		<div className="MiniCart">
@@ -15,20 +14,10 @@ const MiniCart = ({ items, toggleCartIsVisible }) => {
 					<div className="MiniCart__items">
 						{ items && items.length 
 							? items.map(good => (
-								<div className="MiniCart__item" key={good._id + good.size}>
-									<div className="MiniCart__item-left">
-										<div className="MiniCart__item-image">
-											<img 
-												src={good.image}
-												alt="Good image"
-											/>
-										</div>
-										<h3 className="GoodItem__title MiniCart__item-title">{good.title}</h3>
-									</div>
-
-									<span className="MiniCart__item-cost">{good.cost} сом</span>
-									<span className="MiniCart__item-size">{good.size}</span>
-								</div>
+								<Item 
+									key={good._id + good.size}
+									good={good}
+								/>
 							)) 
 							: <span>Корзина пуста :(</span>
 						}

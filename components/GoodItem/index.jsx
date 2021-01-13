@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
+
 import { cartActions } from '../../store/actions';
 import { Sizes, Counter } from '../';
 
@@ -45,7 +47,9 @@ const GoodItem = ({ _id, title, cost, images, sizes }) => {
 			</div>
 
 			<div className="GoodItem__bottom">
-				<h3 className="GoodItem__title">{title}</h3>
+				<h3 className="GoodItem__title">
+					<Link href="/good/[id]" as={`/good/${_id}`}><a>{title}</a></Link>
+				</h3>
 				<span className="GoodItem__cost">{cost} сом</span>
 
 				<button 

@@ -1,0 +1,77 @@
+@import './vars'
+
+.MainMenu
+	position: fixed
+	z-index: 99
+	width: 100%
+	margin-top: 80px
+
+	&__icon
+		cursor: pointer
+		padding: 0 10px
+		height: 100%
+		box-sizing: border-box
+		display: flex
+		align-items: center
+
+		svg
+			fill: $black
+			transition: fill .2s
+
+		&--active
+			svg
+				fill: $red
+
+	&__top, &__bottom
+		span
+			a
+				color: $black
+				transition: color .2s
+				&:hover
+					color: $red
+
+			&.active
+				a
+					color: $red
+	
+	&__top
+		position: relative
+		z-index: 98
+		animation: slideInDown .3s ease
+		padding: 20px 0
+		background-color: #fff
+		border-bottom: 1px solid #f9f9f9
+
+		span
+			margin-right: 30px
+
+			a
+				font: 24px $regular
+
+			&:last-child
+				margin-right: 0
+
+	&__bottom
+		position: relative
+		overflow-y: auto
+		height: calc(100vh - 250px)
+		z-index: 97
+		animation: slideInDown .3s ease
+		padding: 40px 0
+		box-sizing: border-box
+		background-color: #fff
+
+		.container
+			display: flex
+			flex-wrap: wrap
+
+		span
+			margin: 10px 0
+			width: calc(100% / 4)
+
+
+@keyframes slideInDown
+	0%
+		transform: translateY(-100%)
+	100%
+		transform: translateY(0)

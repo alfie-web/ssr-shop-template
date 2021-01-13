@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-const Counter = ({ className, initialValue = 0, onChange = () => {} }) => {
+const Counter = ({ className, initialValue = 1, onChange = () => {} }) => {
 	const [state, setState] = useState(initialValue);
 
 	const handleClick = (val) => {
-		if (state + val < 0) return;
+		if (state + val < 1) return;
 
 		onChange(state + val);
 		setState(state + val);
