@@ -19,7 +19,7 @@ export default function Home({ groups }) {
 
 								<GoodsList 
 									group={g}
-									items={g.Goods}
+									// items={g.Goods}
 									className="Group__goods"
 								/>
 							</div>

@@ -1,6 +1,29 @@
 import LocalStorage from '../../helpers/LocalStorage';
+import { GOODS_SET_ITEMS } from '../types'
+import goodsAPI from '../../api/goods'
 
 const goodsActions = {
+	setGoods: ({ goods, page, hasNextPage, totalDocs, totalPages }) => ({
+		type: GOODS_SET_ITEMS,
+		payload: {
+			items: goods,
+			currentPage: +page,
+			totalPages,
+			hasNextPage,
+			totalDocs
+		}
+	}),
+
+	fetchGoods: () => async dispatch => {
+		const { data } = await goodsAPI.getAll(page)
+
+		return dispatch(goodsActions.setGoods(data.data))
+	},
+
+
+
+
+
 	// addGoodToCart: good => dispatch => {
 	addGoodToCart: good => {
 		const plus = good.quantity ? good.quantity : 1;

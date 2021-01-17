@@ -1,0 +1,17 @@
+@import './vars'
+
+.Catalog
+	.container
+		display: flex
+		flex-wrap: wrap
+
+	&__filters
+		width: 25%
+		margin-top: 50px
+
+	&__goods
+		width: 75%
+		// margin: 0 -10px
+
+		.GoodItem
+			width: calc(100% / 3 - 20px)

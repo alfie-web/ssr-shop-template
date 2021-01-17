@@ -5,9 +5,9 @@ import { groupsAPI } from '../../api';
 
 import { GoodItem } from '../';
 
-const GoodsList = memo(({ group, className, items }) => {
-	// const [items, setItems] = useState([]);
-	const { _id, goods } = group;
+const GoodsList = memo(({ group, className }) => {
+	const [items, setItems] = useState([]);
+	const { _id } = group;
 
 	console.log('GoodsList_RENDERS', items)
 
@@ -15,13 +15,16 @@ const GoodsList = memo(({ group, className, items }) => {
 	// 	fetchGoodsByGroup(_id)
 	// }, [fetchGoodsByGroup, _id])
 
-	// useEffect(async () => {
-	// 	if (!goods) {
-	// 		// console.log(_id)
-	// 		const { data } = await groupsAPI.getGoodsByGroup(_id);
-	// 		console.log(data)
-	// 		setItems(data.data.goods)
-	// 	};
+	useEffect(async () => {
+		// if (!goods) {
+		if (!items.length) {
+			// console.log(_id)
+			const { data } = await groupsAPI.getGoodsByGroup(_id);
+			console.log(data)
+			setItems(data.data.goods)
+		};
+	// })
+	}, [items])
 	// }, [goods])
 
 	return (

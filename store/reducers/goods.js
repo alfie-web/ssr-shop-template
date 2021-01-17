@@ -7,7 +7,13 @@ import {
 
 const initialState = {
 	isFetching: false,
+
 	items: [],
+	hasNextPage: false,
+	totalDocs: 0,
+	currentPage: 0,
+	totalPages: 0,
+
 	current: null
 }
 
@@ -22,7 +28,12 @@ const goodsReducer = (state = initialState, { type, payload }) => {
 		case GOODS_SET_ITEMS:
 			return {
 				...state,
-				items: payload
+				items: payload.items,
+				hasNextPage: payload.hasNextPage,
+				totalDocs: payload.totalDocs,
+				currentPage: payload.currentPage,
+				totalPages: payload.totalPages,
+				isFetching: false,
 			}
 
 		case GOODS_SET_CURRENT:

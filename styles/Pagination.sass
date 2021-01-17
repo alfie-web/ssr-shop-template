@@ -1,0 +1,22 @@
+@import './vars'
+
+.Pagination
+	display: flex
+	justify-content: center
+	align-items: flex-end
+	margin-top: 30px
+
+	li
+		margin: 0 15px
+
+	&__item
+		font: 24px/30px $extra
+		color: $black
+		transition: color .2s
+		&:hover
+			color: $red
+
+		&--active
+			font: 36px/36px $extra
+			color: $red
+			pointer-events: none
